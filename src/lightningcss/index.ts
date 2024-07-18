@@ -5,8 +5,8 @@ import { type LTO, LightningcssTransform } from "./transform.js";
 export interface TransformOptions extends CssFile, LTO {}
 
 export type LTR = {
-  csscode: string;
-  mapcode: string;
+	csscode: string;
+	mapcode: string;
 };
 
 /**
@@ -67,31 +67,32 @@ export type LTR = {
  */
 
 export default async function transform({
-  baseUrl,
-  ignores,
-  write,
-  outDir,
-  fileName,
-  sourceMap,
-  minify,
+	baseUrl,
+	ignores,
+	write,
+	outDir,
+	fileName,
+	sourceMap,
+	minify,
 }: TransformOptions): Promise<LTR | undefined> {
-  if (typeof baseUrl !== "string" || baseUrl.trim() === "") {
-    throw new Error("Invalid baseUrl: must be a non-empty string");
-  }
-  const files = cssFiles(baseUrl, ignores);
-  let cssContent;
-  try {
-    cssContent = await mergeCssContent(files);
-  } catch (error: any) {
-    throw new Error(`Failed to merge CSS content: ${error.message}`);
-  }
-  const css = Buffer.from(cssContent);
-  return LightningcssTransform({
-    content: css,
-    write,
-    outDir,
-    fileName,
-    sourceMap,
-    minify,
-  });
+	if (typeof baseUrl !== "string" || baseUrl.trim() === "") {
+		throw new Error("Invalid baseUrl: must be a non-empty string");
+	}
+	const files = cssFiles(baseUrl, ignores);
+	let cssContent: string;
+	try {
+		cssContent = await mergeCssContent(files);
+	} catch (error) {
+		const errorMessage = error instanceof Error ? error.message : String(error);
+		throw new Error(`Failed to merge CSS content: ${errorMessage}`);
+	}
+	const css = Buffer.from(cssContent);
+	return LightningcssTransform({
+		content: css,
+		write,
+		outDir,
+		fileName,
+		sourceMap,
+		minify,
+	});
 }
