@@ -1,0 +1,15 @@
+{
+	"compilerOptions": {
+		"allowJs": true,
+		"sourceMap": true,
+		"declaration": true,
+		"moduleResolution": "NodeNext",
+		"module": "NodeNext",
+		"outDir": "./dist",
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"emitDeclarationOnly": true
+	},
+	"include": ["src/**/*"],
+	"exclude": ["node_modules/*", "dist/*"]
+}
