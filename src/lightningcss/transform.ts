@@ -59,12 +59,12 @@ export function LightningcssTransform({
 	const mapcode = String(map);
 	if (W && outDir) {
 		baganWriteFile({
-			filePath: `${outDir}.${fn}`,
+			filePath: `${outDir}/${fn}`,
 			data: csscode,
 		});
 		if (SM) {
 			baganWriteFile({
-				filePath: `${outDir}.${fn}.map`,
+				filePath: `${outDir}/${fn}.map`,
 				data: mapcode,
 			});
 		}

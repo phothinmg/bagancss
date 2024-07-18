@@ -16,14 +16,17 @@ import {
 	getFileName,
 } from "./helper/utils.js";
 
-import transform_L, { type LTR } from "./lightningcss/index.js";
+import transform, {
+	type LTR,
+	type TransformOptions,
+} from "./lightningcss/index.js";
 
 export {
-	transform_L,
+	transform,
 	cssFiles,
 	cssFromURL,
 	baganWriteFile,
 	getFileName,
 	mergeCssContent,
 };
-export type { LTR, CssFile, BaganWriteFileOptions };
+export type { LTR, CssFile, BaganWriteFileOptions, TransformOptions };
