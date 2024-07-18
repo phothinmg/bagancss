@@ -1,13 +1,13 @@
 import { mergeCssContent } from "../helper/mearge_css_content.js";
-import { cssFiles, type CssFile } from "../helper/utils.js";
-import { LightningcssTransform, type LTO } from "./transform.js";
+import { type CssFile, cssFiles } from "../helper/utils.js";
+import { type LTO, LightningcssTransform } from "./transform.js";
 
 export type F = CssFile;
 export type T = LTO;
 
 export type LTR = {
-  csscode: string;
-  mapcode: string;
+	csscode: string;
+	mapcode: string;
 };
 
 /**
@@ -72,18 +72,18 @@ export type LTR = {
  */
 
 export default async function transform_L(
-  Foptions: F,
-  Toptions: T
+	Foptions: F,
+	Toptions: T,
 ): Promise<LTR | undefined> {
-  const files = cssFiles(Foptions.baseUrl, Foptions.ignores);
-  const cssContent = await mergeCssContent(files);
-  const css = Buffer.from(cssContent);
-  return LightningcssTransform({
-    content: css,
-    write: Toptions.write,
-    outDir: Toptions.outDir,
-    fileName: Toptions.fileName,
-    sourceMap: Toptions.sourceMap,
-    minify: Toptions.minify,
-  });
+	const files = cssFiles(Foptions.baseUrl, Foptions.ignores);
+	const cssContent = await mergeCssContent(files);
+	const css = Buffer.from(cssContent);
+	return LightningcssTransform({
+		content: css,
+		write: Toptions.write,
+		outDir: Toptions.outDir,
+		fileName: Toptions.fileName,
+		sourceMap: Toptions.sourceMap,
+		minify: Toptions.minify,
+	});
 }
