@@ -30,6 +30,10 @@ export type LTR = {
  * 
  * <br />
  * 
+ *  **Example Usage**
+ * 
+ * <br/>
+ * 
  * ```ts
  * import { transform, type LTR } from "bagancss";
 
