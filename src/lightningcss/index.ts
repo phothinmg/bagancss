@@ -1,21 +1,15 @@
 import { mergeCssContent } from "../helper/mearge_css_content.js";
-import { cssFiles } from "../helper/utils.js";
-import type { CssFile } from "../helper/utils.js";
-import { LightningcssTransform } from "./transform.js";
-import type { LightningcssTransformOptions } from "./transform.js";
+import { cssFiles, type CssFile } from "../helper/utils.js";
+import { LightningcssTransform, type LTO } from "./transform.js";
 
-type F = CssFile;
-type L = LightningcssTransformOptions;
+export type F = CssFile;
+export type T = LTO;
 
-export type LT = {
-	Fopts: F;
-	writeFile?: boolean;
-	writeFilePath?: string;
-};
 export type LTR = {
-	csscode: string;
-	mapcode: string;
+  csscode: string;
+  mapcode: string;
 };
+
 /**
  * ### Asynchronously transforms Lightningcss content.
  * 
@@ -23,23 +17,18 @@ export type LTR = {
  * 
  * * **Parameters**
  * 
- *   * **Fopts = File options**
+ *   * **`Foptions`: `F` = File options**
  * 
- *     * **`Fopts.baseUrl` : path/to/directory of css files.**
+ *     1. **`Foptions.baseUrl` : path/to/directory of css files.**
  * 
- *     * **`Fopts.ignores`: Array of files want to exculde in transform**
+ *     2. **`Foptions.ignores`: Array of files want to exculde in transform**
  * 
- *        * **_When using `@import` statements , need to collect these in special file ` _import.css` in `baseUrl`._**
+ *        * **_When using `@import` statements , need to collect these at special file named ` _import.css` in `baseUrl`._**
  * 
- *    * **`writeFile` : If true , will write transformed code to file(map file include), default - false**
+ *    * **`Toptions` : `T` = Transform Options**
  * 
- *    * **`writeFilePath` : When `writeFile` is `true` required. eg. `./dist/index.css`**
+ *    
  * 
- * * **Returns**
- * 
- *   * **Write the output to files when `writeFile` is `true`**.
- * 
- *   * **Return `csscode` and `mapcode` when `writeFile` is `false`**.
  * 
  * 
  * ***
@@ -82,17 +71,19 @@ export type LTR = {
  *
  */
 
-export default async function transform_L({
-	Fopts,
-	writeFile,
-	writeFilePath,
-}: LT): Promise<LTR | undefined> {
-	const files = cssFiles(Fopts.baseUrl, Fopts.ignores);
-	const cssContent = await mergeCssContent(files);
-	const css = Buffer.from(cssContent);
-	return LightningcssTransform({
-		content: css,
-		write: writeFile,
-		outFilePath: writeFilePath,
-	});
+export default async function transform_L(
+  Foptions: F,
+  Toptions: T
+): Promise<LTR | undefined> {
+  const files = cssFiles(Foptions.baseUrl, Foptions.ignores);
+  const cssContent = await mergeCssContent(files);
+  const css = Buffer.from(cssContent);
+  return LightningcssTransform({
+    content: css,
+    write: Toptions.write,
+    outDir: Toptions.outDir,
+    fileName: Toptions.fileName,
+    sourceMap: Toptions.sourceMap,
+    minify: Toptions.minify,
+  });
 }
