@@ -1,17 +1,17 @@
 {
-	"compilerOptions": {
-		"allowJs": true,
-		"sourceMap": true,
-		"moduleResolution": "NodeNext",
-		"module": "NodeNext",
-		"outDir": "./dist",
-		"resolveJsonModule": true,
-		"isolatedModules": true,
-		"target": "ES6",
-		"declaration": true,
-		"emitDeclarationOnly": true,
-		"strict": true
-	},
-	"include": ["src/**/*", "notes/lightningcss.ts", "notes/index.ts"],
-	"exclude": ["node_modules/*", "dist/*"]
+  "compilerOptions": {
+    "allowJs": true,
+    "sourceMap": true,
+    "moduleResolution": "NodeNext",
+    "module": "NodeNext",
+    "outDir": "./dist",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "target": "ES6",
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "strict": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules/*", "dist/*"]
 }
