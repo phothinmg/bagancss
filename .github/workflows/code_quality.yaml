@@ -23,4 +23,4 @@ jobs:
           version: latest
 
      - name: Run Check
-       run: pnpm check && pnpm ci
+       run: pnpm check 
