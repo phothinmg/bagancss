@@ -21,6 +21,6 @@
 	},
 	"files": {
 		// All tools, including the linter, ignore following files
-		"ignore": ["dist/**", "notes/**"]
+		"ignore": ["dist/**", "notes/**", "a.ts"]
 	}
 }
