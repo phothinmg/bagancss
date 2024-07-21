@@ -40,7 +40,6 @@
     "@biomejs/biome": "^1.8.3",
     "babel-preset-minify": "^0.5.2",
     "husky": "^9.1.1",
-    "lint-staged": "^15.2.7",
     "tsx": "^4.16.2"
   },
   "dependencies": {
