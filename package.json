@@ -24,9 +24,11 @@
     "check": "biome check --write src",
     "format": "biome format --write src ",
     "lint": "biome lint --write src",
+    "ci": "biome ci",
     "clean": "rm -r dist",
     "build:prod": "tsc && babel src --out-dir dist --extensions '.ts'",
-    "build": "clean && build:prod"
+    "build": "pnpm clean && pnpm build:prod",
+    "patc": "pnpm version patch && pnpm publish"
   },
   "devDependencies": {
     "@babel/cli": "^7.24.8",
