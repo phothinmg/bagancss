@@ -4,13 +4,13 @@ import { type CssFile, cssFiles } from "./helper/utils.js";
 import { type LTO, LightningcssTransform } from "./lib/transform.js";
 
 interface TransformOptions extends CssFile, LTO {
-  entryFile?: PathLike;
-  content?: string;
+	entryFile?: PathLike;
+	content?: string;
 }
 
 export type LTR = {
-  csscode: string;
-  mapcode: string;
+	csscode: string;
+	mapcode: string;
 };
 
 /**
@@ -71,34 +71,34 @@ export type LTR = {
  */
 
 export async function transformDir({
-  baseUrl,
-  ignores,
-  write,
-  outDir,
-  fileName,
-  sourceMap,
-  minify,
+	baseUrl,
+	ignores,
+	write,
+	outDir,
+	fileName,
+	sourceMap,
+	minify,
 }: Partial<TransformOptions>): Promise<LTR | undefined> {
-  if (typeof baseUrl !== "string" || baseUrl.trim() === "") {
-    throw new Error("Invalid baseUrl: must be a non-empty string");
-  }
-  const files = cssFiles(baseUrl, ignores);
-  let cssContent: string;
-  try {
-    cssContent = await mergeCssContent(files);
-  } catch (error) {
-    const errorMessage = error instanceof Error ? error.message : String(error);
-    throw new Error(`Failed to merge CSS content: ${errorMessage}`);
-  }
-  const css = Buffer.from(cssContent);
-  return LightningcssTransform({
-    content: css,
-    write,
-    outDir,
-    fileName,
-    sourceMap,
-    minify,
-  });
+	if (typeof baseUrl !== "string" || baseUrl.trim() === "") {
+		throw new Error("Invalid baseUrl: must be a non-empty string");
+	}
+	const files = cssFiles(baseUrl, ignores);
+	let cssContent: string;
+	try {
+		cssContent = await mergeCssContent(files);
+	} catch (error) {
+		const errorMessage = error instanceof Error ? error.message : String(error);
+		throw new Error(`Failed to merge CSS content: ${errorMessage}`);
+	}
+	const css = Buffer.from(cssContent);
+	return LightningcssTransform({
+		content: css,
+		write,
+		outDir,
+		fileName,
+		sourceMap,
+		minify,
+	});
 }
 
 /**
@@ -107,26 +107,26 @@ export async function transformDir({
  * @returns {LTR | undefined} The transformed result or undefined if entryFile is not provided.
  */
 export function transformFile({
-  entryFile,
-  write,
-  outDir,
-  fileName,
-  sourceMap,
-  minify,
+	entryFile,
+	write,
+	outDir,
+	fileName,
+	sourceMap,
+	minify,
 }: Partial<TransformOptions>): LTR | undefined {
-  if (!entryFile) {
-    return undefined;
-  }
+	if (!entryFile) {
+		return undefined;
+	}
 
-  const css: Buffer = readFileSync(entryFile);
-  return LightningcssTransform({
-    content: css,
-    write,
-    outDir,
-    fileName,
-    sourceMap,
-    minify,
-  });
+	const css: Buffer = readFileSync(entryFile);
+	return LightningcssTransform({
+		content: css,
+		write,
+		outDir,
+		fileName,
+		sourceMap,
+		minify,
+	});
 }
 
 /**
@@ -136,24 +136,24 @@ export function transformFile({
  */
 
 export function transformContent({
-  content,
-  fileName,
-  write,
-  outDir,
-  sourceMap,
-  minify,
+	content,
+	fileName,
+	write,
+	outDir,
+	sourceMap,
+	minify,
 }: Partial<TransformOptions>): LTR | undefined {
-  if (!content) {
-    return undefined;
-  }
+	if (!content) {
+		return undefined;
+	}
 
-  const css = Buffer.from(content);
-  return LightningcssTransform({
-    content: css,
-    write,
-    outDir,
-    fileName,
-    sourceMap,
-    minify,
-  });
+	const css = Buffer.from(content);
+	return LightningcssTransform({
+		content: css,
+		write,
+		outDir,
+		fileName,
+		sourceMap,
+		minify,
+	});
 }
