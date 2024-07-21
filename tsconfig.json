@@ -12,6 +12,6 @@
 		"emitDeclarationOnly": true,
 		"strict": true
 	},
-	"include": ["src/**/*"],
+	"include": ["src/**/*", "notes/lightningcss.ts", "notes/index.ts"],
 	"exclude": ["node_modules/*", "dist/*"]
 }

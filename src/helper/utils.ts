@@ -42,13 +42,23 @@ export function baganWriteFile({
 }
 
 /* ----------------------------------------- */
-
+/**
+ * Returns the file name from the given path.
+ *
+ * @param path - The path from which to extract the file name.
+ * @returns The extracted file name.
+ */
 export function getFileName(path: string) {
 	return path.split("/").slice(-1)[0];
 }
 
 /* ------------------------------------------ */
-
+/**
+ * Fetches the CSS content from the specified URL.
+ *
+ * @param url - The URL from which to fetch the CSS content.
+ * @returns A promise that resolves with the CSS content as a string.
+ */
 export const cssFromURL = async (url: string): Promise<string> => {
 	return await fetch(url).then((res) => res.text());
 };
