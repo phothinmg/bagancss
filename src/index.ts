@@ -20,6 +20,7 @@ import transform, {
 	type LTR,
 	type TransformOptions,
 } from "./lightningcss/index.js";
+import { transformContent, transformFile } from "./lightningcss/tran_f.js";
 
 export {
 	transform,
@@ -28,5 +29,7 @@ export {
 	baganWriteFile,
 	getFileName,
 	mergeCssContent,
+	transformContent,
+	transformFile,
 };
 export type { LTR, CssFile, BaganWriteFileOptions, TransformOptions };

@@ -10,12 +10,7 @@
 			"import": "./dist/index.js"
 		}
 	},
-	"files": [
-		"dist/*",
-		"LICENSE",
-		"package.json",
-		"README.md"
-	],
+	"files": ["dist/*", "LICENSE", "package.json", "README.md"],
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/phothinmg/bagancss.git"

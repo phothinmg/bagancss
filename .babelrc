@@ -1,22 +1,22 @@
 {
-  "presets": [
-    [
-      "@babel/preset-env",
-      {
-        "targets": {
-          "esmodules": true,
-          "node": "current"
-        },
-        "modules": false
-      }
-    ],
-    [
-      "minify",
-      {
-        "keepFnName": true
-      }
-    ],
-    "@babel/preset-typescript"
-  ],
-  "plugins": ["@babel/plugin-transform-typescript"]
+	"presets": [
+		[
+			"@babel/preset-env",
+			{
+				"targets": {
+					"esmodules": true,
+					"node": "current"
+				},
+				"modules": false
+			}
+		],
+		[
+			"minify",
+			{
+				"keepFnName": true
+			}
+		],
+		"@babel/preset-typescript"
+	],
+	"plugins": ["@babel/plugin-transform-typescript"]
 }
