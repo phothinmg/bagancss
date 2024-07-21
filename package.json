@@ -1,48 +1,55 @@
 {
-	"name": "bagancss",
-	"version": "0.0.5",
-	"type": "module",
-	"license": "Apache-2.0",
-	"author": "Pho Thin Mg",
-	"exports": {
-		".": {
-			"types": "./dist/index.d.ts",
-			"import": "./dist/index.js"
-		}
-	},
-	"files": ["dist/*", "LICENSE", "package.json", "README.md"],
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/phothinmg/bagancss.git"
-	},
-	"scripts": {
-		"check": "biome check --write src",
-		"format": "biome format --write src ",
-		"lint": "biome lint --write src",
-		"build": "tsc && babel src --out-dir dist --extensions '.ts'"
-	},
-	"devDependencies": {
-		"@babel/cli": "^7.24.8",
-		"@babel/core": "^7.24.9",
-		"@babel/plugin-transform-typescript": "^7.24.8",
-		"@babel/preset-env": "^7.24.8",
-		"@babel/preset-typescript": "^7.24.7",
-		"@biomejs/biome": "^1.8.3",
-		"babel-preset-minify": "^0.5.2",
-		"tsx": "^4.16.2"
-	},
-	"dependencies": {
-		"@types/glob": "^8.1.0",
-		"@types/node": "^20.14.11",
-		"browserslist": "^4.23.2",
-		"glob": "^11.0.0",
-		"lightningcss": "^1.25.1",
-		"typescript": "^5.5.3"
-	},
-	"pnpm": {
-		"allowedDeprecatedVersions": {
-			"glob": "7.2.3",
-			"inflight": "1.0.6"
-		}
-	}
+  "name": "bagancss",
+  "version": "0.0.5",
+  "type": "module",
+  "license": "Apache-2.0",
+  "author": "Pho Thin Mg",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist/*",
+    "LICENSE",
+    "package.json",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phothinmg/bagancss.git"
+  },
+  "scripts": {
+    "check": "biome check --write src",
+    "format": "biome format --write src ",
+    "lint": "biome lint --write src",
+    "clean": "rm -r dist",
+    "build:prod": "tsc && babel src --out-dir dist --extensions '.ts'",
+    "build": "clean && build:prod"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.24.8",
+    "@babel/core": "^7.24.9",
+    "@babel/plugin-transform-typescript": "^7.24.8",
+    "@babel/preset-env": "^7.24.8",
+    "@babel/preset-typescript": "^7.24.7",
+    "@biomejs/biome": "^1.8.3",
+    "babel-preset-minify": "^0.5.2",
+    "tsx": "^4.16.2"
+  },
+  "dependencies": {
+    "@types/glob": "^8.1.0",
+    "@types/node": "^20.14.11",
+    "browserslist": "^4.23.2",
+    "glob": "^11.0.0",
+    "lightningcss": "^1.25.1",
+    "typescript": "^5.5.3"
+  },
+  "pnpm": {
+    "allowedDeprecatedVersions": {
+      "glob": "7.2.3",
+      "inflight": "1.0.6"
+    }
+  }
 }
