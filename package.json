@@ -28,7 +28,21 @@
     "clean": "rm -r dist",
     "build:prod": "tsc && babel src --out-dir dist --extensions '.ts'",
     "build": "pnpm clean && pnpm build:prod",
-    "patc": "pnpm version patch && pnpm publish"
+    "patc": "pnpm version patch && pnpm publish",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}": [
+      "biome check --files-ignore-unknown=true",
+      "biome check --write --no-errors-on-unmatched",
+      "biome check --write --organize-imports-enabled=false --no-errors-on-unmatched",
+      "biome check --write --unsafe --no-errors-on-unmatched",
+      "biome format --write --no-errors-on-unmatched",
+      "biome lint --write --no-errors-on-unmatched"
+    ],
+    "*": [
+      "biome check --no-errors-on-unmatched --files-ignore-unknown=true"
+    ]
   },
   "devDependencies": {
     "@babel/cli": "^7.24.8",
@@ -38,6 +52,8 @@
     "@babel/preset-typescript": "^7.24.7",
     "@biomejs/biome": "^1.8.3",
     "babel-preset-minify": "^0.5.2",
+    "husky": "^9.1.1",
+    "lint-staged": "^15.2.7",
     "tsx": "^4.16.2"
   },
   "dependencies": {
