@@ -4,13 +4,13 @@
     "sourceMap": true,
     "moduleResolution": "NodeNext",
     "module": "NodeNext",
-    "outDir": "./dist",
+    "outDir": "./out",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "target": "ES6",
     "declaration": true,
-    "emitDeclarationOnly": true,
-    "strict": true
+    "strict": true,
+    "declarationDir": "./dist"
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules/*", "dist/*"]

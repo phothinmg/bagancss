@@ -1,4 +1,3 @@
-import { styleText } from "node:util";
 import browserslist from "browserslist";
 /* NPM */
 import { Features, browserslistToTargets, transform } from "lightningcss";
@@ -33,12 +32,7 @@ export function LightningcssTransform({
 	const SM: boolean = sourceMap ?? false;
 	const MNF: boolean = minify ?? false;
 	if (W && !outDir) {
-		console.log(
-			styleText(
-				["bold", "yellow"],
-				"If `options.write` enable `option.outDir` is required",
-			),
-		);
+		console.log("If `options.write` enable `option.outDir` is required");
 		return {
 			csscode: "",
 			mapcode: "",

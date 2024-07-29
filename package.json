@@ -28,7 +28,7 @@
     "clean": "rm -r dist",
     "build:prod": "tsc && babel src --out-dir dist --extensions '.ts'",
     "build": "pnpm clean && pnpm build:prod",
-    "patc": "pnpm version patch && pnpm publish",
+    "pat": "pnpm version patch && pnpm publish",
     "prepare": "husky"
   },
   "devDependencies": {
@@ -38,14 +38,15 @@
     "@babel/preset-env": "^7.24.8",
     "@babel/preset-typescript": "^7.24.7",
     "@biomejs/biome": "^1.8.3",
+    "@types/glob": "^8.1.0",
+    "@types/node": "^20.14.12",
     "babel-preset-minify": "^0.5.2",
     "husky": "^9.1.1",
     "tsx": "^4.16.2"
   },
   "dependencies": {
-    "@types/glob": "^8.1.0",
-    "@types/node": "^20.14.11",
     "browserslist": "^4.23.2",
+    "dax-sh": "^0.41.0",
     "glob": "^11.0.0",
     "lightningcss": "^1.25.1",
     "typescript": "^5.5.3"
